@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ex1 {
+public class Ex1 {
     public  static void main(String[] args) {
         int [] aleatorio = gerarAleatorio(1000);
         int [] ordenado = gerarOrdenados(1000);
@@ -23,7 +23,7 @@ public class ex1 {
     int[] vetor = Arrays.copyOf(vetorOriginal, vetorOriginal.length);
     long inicio = System.currentTimeMillis();
 
-    if (tipo.equals("Bulle")){
+    if (tipo.equals("Bubble")){
         bubbleSort(vetor);
     } else if (tipo.equals("Selection")) {
         selectionSort(vetor);
