@@ -1,3 +1,5 @@
+package Bimestre1;
+
 public class TorreHanoi {
     static void hanoi(int n, String origem, String destino, String aux) {
         if (n==1)

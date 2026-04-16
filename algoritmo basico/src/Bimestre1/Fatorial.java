@@ -1,3 +1,5 @@
+package Bimestre1;
+
 public class Fatorial {
     public static void main(String[] args) {
         int x = 4;

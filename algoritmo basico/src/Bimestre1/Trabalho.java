@@ -1,22 +1,35 @@
+package Bimestre1;
+
 import java.util.Arrays;
 
-public class Ex1 {
+public class Trabalho {
     public  static void main(String[] args) {
-        int [] aleatorio = gerarAleatorio(1000);
-        int [] ordenado = gerarOrdenados(1000);
-        int [] invertido = gerarInvertido(1000);
+        int [] tamanhos = {100,1000,10000,100000};
 
-        testar("bubbleSort - Aleatorio", aleatorio, "Bubble");
-        testar("bubbleSort - Ordenado", ordenado, "Bubble");
-        testar("bubbleSort - Invertido", invertido, "Bubble");
+        for (int tamanho : tamanhos) {
+            System.out.println("\n===== TAMANHO: " + tamanho + " =====");
 
-        testar("SelectionSort - Aleatorio", aleatorio, "Selection");
-        testar("SelectionSort - Ordenado", ordenado, "Selection");
-        testar("SelectionSort - Invertido", invertido, "Selection");
 
-        testar("InsertionSort - Aleatorio", aleatorio, "Insertion");
-        testar("InsertionSort - Ordenado", ordenado, "Insertion");
-        testar("InsertionSort - Invertido", invertido, "Insertion");
+            int[] aleatorio = gerarAleatorio(tamanho);
+            int[] ordenado = gerarOrdenados(tamanho);
+            int[] invertido = gerarInvertido(tamanho);
+
+            testar("bubbleSort - Aleatorio", aleatorio, "Bubble");
+            testar("bubbleSort - Ordenado", ordenado, "Bubble");
+            testar("bubbleSort - Invertido", invertido, "Bubble");
+
+            testar("SelectionSort - Aleatorio", aleatorio, "Selection");
+            testar("SelectionSort - Ordenado", ordenado, "Selection");
+            testar("SelectionSort - Invertido", invertido, "Selection");
+
+            testar("InsertionSort - Aleatorio", aleatorio, "Insertion");
+            testar("InsertionSort - Ordenado", ordenado, "Insertion");
+            testar("InsertionSort - Invertido", invertido, "Insertion");
+
+            testar("QuickSort - Aleatorio", aleatorio, "Quick");
+            testar("QuickSort - Ordenado", ordenado, "Quick");
+            testar("QuickSort - Invertido", invertido, "Quick");
+        }
     }
     public static void testar(String nome, int[] vetorOriginal, String tipo){
 
@@ -29,7 +42,9 @@ public class Ex1 {
         selectionSort(vetor);
     } else if(tipo.equals("Insertion")) {
         insertionSort(vetor);
-        }
+        } else if(tipo.equals("Quick")) {
+        quick(vetor, 0, vetor.length - 1);
+    }
     long fim = System.currentTimeMillis();
         System.out.println(nome + ": " + (fim - inicio) + "ms");
     }
@@ -90,6 +105,32 @@ public static int[] gerarOrdenados(int tamanho){
             }
             vetor[j+1] = aux;
         }
+    }
+    public static void quick(int[] array, int left, int right){
+        int i = left;
+        int j = right;
+        int aux;
+        int pivotidx = (left + right)/2;
+        int pivot = array[pivotidx];
+
+        while (i <= j){
+            while (array[i] < pivot)
+                i++;
+            while (array[j] > pivot)
+                j--;
+            if (i <= j){
+                aux = array[i];
+                array[i] = array[j];
+                array[j] = aux;
+                i++;
+                j--;
+            }
+        }
+
+        if (left < j)
+            quick(array, left, j);
+        if (i < right)
+            quick(array, i, right);
     }
 }
 
