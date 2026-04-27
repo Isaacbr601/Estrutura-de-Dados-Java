@@ -81,6 +81,7 @@ public class ListaEncadeada {
     public static void main(String[] args) {
         ListaEncadeada lista = new ListaEncadeada();
 
+
         lista.inserirInicio(30);
         lista.inserirInicio(20);
         lista.inserirInicio(10);
